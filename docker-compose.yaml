@@ -18,7 +18,16 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
   terratest:
     build: .
+    image: terraform:test
     command: ["apply", "-auto-approve"]
     depends_on:
       - "localstack"
-      
+  gcp:
+    image: gcr.io/gcp-runtimes/container-structure-test:latest
+    command: ["test", "--image", "terraform:test", "--config", "tests/config.yaml"]
+    volumes:
+      - "./tests:/tests/"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    depends_on:
+      - terratest
+  
