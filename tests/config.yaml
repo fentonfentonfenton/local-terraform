@@ -1,7 +1,7 @@
 schemaVersion: '2.0.0' # Make sure to test the latest schema version
 commandTests:
-- name: 'apt-get'
+- name: 'echo hello world'
   command: 'echo'
-  args: ['hello']
-  expectedOutput: ['hello']    
+  args: ['hello world']
+  expectedOutput: ['hello world']    
 
