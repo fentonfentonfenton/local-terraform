@@ -16,13 +16,13 @@ services:
     volumes:
       - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
-  terratest:
+  terraform:
     build: .
     image: terraform:test
     command: ["apply", "-auto-approve"]
     depends_on:
       - "localstack"
-  gcp:
+  gct:
     image: gcr.io/gcp-runtimes/container-structure-test:latest
     command: ["test", "--image", "terraform:test", "--config", "tests/config.yaml"]
     volumes:
