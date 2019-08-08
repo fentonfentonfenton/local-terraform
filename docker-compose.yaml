@@ -22,7 +22,7 @@ services:
     command: ["apply", "-auto-approve", "terraform.plan"]
     depends_on:
       - localstack
-  gct:
+  gst:
     image: gcr.io/gcp-runtimes/container-structure-test:latest
     command: ["test", "--image", "terraform:test", "--config", "tests/config.yaml"]
     volumes:
