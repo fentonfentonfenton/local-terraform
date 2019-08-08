@@ -2,5 +2,10 @@ schemaVersion: '2.0.0' # Make sure to test the latest schema version
 commandTests:
 - name: 'echo hello world'
   command: 'echo'
-  args: ['hello', 'world']
-  expectedOutput: ['hello world']    
+  args: ['Hello', 'World']
+  expectedOutput: ['hello world']
+
+fileExistenceTests:
+- name: 'plan'
+  path: '/terraform/terraform.plan'
+  shouldExist: true
