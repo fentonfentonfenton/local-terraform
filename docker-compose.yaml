@@ -31,4 +31,11 @@ services:
     depends_on:
       - localstack
       - terraform
-  
+  trivy:
+    image: knqyf263/trivy
+    command: terraform:test
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./.cache:/.cache"
+    depends_on:
+      - gst  
